@@ -1,0 +1,53 @@
+<div class="bg h-100">
+   <div  class="page-header" style="padding-left: 10px; padding-top: 10px;">
+     <h5 style="color: white; cursor: pointer;" (click)="goTohome()"><i class="fa fa-arrow-left" aria-hidden="true"></i><span>Back to Home Page</span></h5>    
+    </div>
+    <div class="container" style="padding-top: 100px;">
+     
+        <div class="row wrapper white-bg page-heading">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" style="background-color: rgb(255, 255, 255);">
+                <!-- <mat-toolbar> -->
+                    <h2 style="color: blue;">Login As {{loginUser}}</h2>
+                  <!-- </mat-toolbar> -->
+              <!-- <h2>Routing Declaration</h2> -->
+              <!-- <h2><a href="#"><i class="fa fa-arrow-left m-r-sm icon f-s-19 m-b-sm swing" aria-hidden="true"  role="button" tabindex="0"></i></a>Login </h2> -->
+              </div>
+        </div>
+       <div class="row">
+       <div class="col-lg-4"></div>
+       <div class="col-lg-4" style="background-color: white;">
+ 
+         <form class="my-form" autocomplete="off">
+ 
+ 
+ 
+      
+         
+             
+              <mat-form-field class="full-width">
+                 <mat-label>Email</mat-label>
+                 <input  matInput [(ngModel)]="loginData.email"  placeholder="Email" name="email">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                 <mat-label>Password</mat-label>
+                 <input  matInput type="password" [(ngModel)]="loginData.password"  placeholder="Password"  name="password">
+              </mat-form-field>
+             <!--FORM FIELDS HERE-->
+           </form>
+ 
+ 
+         
+          
+       <!-- CONTENT HERE -->
+          
+ 
+         <button mat-raised-button (click)="login()" color="primary">LOGIN</button>
+        <p style="margin-top: 20px;">Doesn't have an account? <a (click)="goToregister()" href="javascript:void(null);">Register here</a></p>
+       </div>
+    </div>
+ 
+       <!-- REGISTER BUTTON -->
+    </div>
+   
+ </div>

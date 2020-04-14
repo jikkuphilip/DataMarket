@@ -1,0 +1,52 @@
+<div class="bg h-100">
+   <div class="container" style="padding-top: 100px;">
+      <div class="row wrapper white-bg page-heading">
+         <div class="col-lg-4"></div>
+         <div class="col-lg-4" style="background-color: rgb(255, 255, 255);">
+             <!-- <mat-toolbar> -->
+                 <h2 style="color: blue;">Register {{user}}</h2>
+               <!-- </mat-toolbar> -->
+           <!-- <h2>Routing Declaration</h2> -->
+           <!-- <h2><a href="#"><i class="fa fa-arrow-left m-r-sm icon f-s-19 m-b-sm swing" aria-hidden="true"  role="button" tabindex="0"></i></a>Login </h2> -->
+           </div>
+     </div>
+      <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4" style="background-color: white;">
+
+        <form class="my-form" autocomplete="off">
+
+
+
+     
+             <mat-form-field class="full-width">
+                <mat-label>User Name</mat-label>
+                <input  matInput  placeholder="Last Name" [(ngModel)]="postData.username" name="lname"  required>
+             </mat-form-field>
+            
+             <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input  matInput  placeholder="Email" [(ngModel)]="postData.email" name="email">
+             </mat-form-field>
+             <!-- <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input  matInput type="password"  placeholder="Password"  name="password">
+             </mat-form-field> -->
+            <!--FORM FIELDS HERE-->
+          </form>
+
+
+        
+         
+      <!-- CONTENT HERE -->
+         
+
+        <button style="margin-bottom: 20px;" mat-raised-button (click)="registerData()" color="primary">REGISTER</button>
+        <p>Already have an account? <a (click)="goTologin()" href="javascript:void(null);">Login Here</a></p>
+      </div>
+   </div>
+
+      <!-- REGISTER BUTTON -->
+   </div>
+  
+</div>

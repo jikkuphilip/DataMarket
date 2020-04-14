@@ -1,0 +1,16 @@
+.my-form{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+   
+  .full-width {
+    width: 100%;
+    /* background-color: white; */
+  }
+
+  .bg { 
+    /* background-color: green; */
+    background-image: url('../../assets/backgrd.jpg');
+
+}
