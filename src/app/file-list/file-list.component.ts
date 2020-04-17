@@ -48,7 +48,7 @@ export class FileListComponent implements OnInit {
 
   getFiles () {
     let showingData = [];
-    this.service.fileList().subscribe(resp => {
+    this.service.fileList().subscribe((resp:any) => {
       this.files = resp.results;
       console.log('files', this.files)
       this.files.map((item,i) => {

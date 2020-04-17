@@ -51,7 +51,7 @@ export class BatchVerificationComponent implements OnInit {
 
   getList () {
     console.log('keravo')
-    this.service.getBatchList().subscribe(resp => {
+    this.service.getBatchList().subscribe((resp:any) => {
       this.batchList = resp.results;
       this.batchList.map((item,i) => {
         item.position = i+1;

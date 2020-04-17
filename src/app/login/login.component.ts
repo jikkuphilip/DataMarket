@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login () {
-    this.service.UserLogin(this.loginData).subscribe(resp => {
+    this.service.UserLogin(this.loginData).subscribe((resp: any) => {
       this.toast.success('Login Successful', 'Success');
       localStorage.setItem('isLoggedIn','true');
       localStorage.setItem('email',this.loginData.email)
