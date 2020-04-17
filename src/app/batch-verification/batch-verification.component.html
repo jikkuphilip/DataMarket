@@ -1,1 +1,47 @@
-<p>batch-verification works!</p>
+<div  class="page-header">
+    <h5 style="cursor: pointer; margin-right: 10px; margin-top: 10px;" class="pull-right" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i><span>Logout</span></h5>    
+   </div>
+  
+  <div class="container" style="padding-top:20px; padding-bottom: 20px;">
+    <div class="row">
+  <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+  
+          <!-- <mat-form-field>
+              <mat-label>Search</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Enter search data">
+            </mat-form-field> -->
+            
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element" > {{element.position}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Seller </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="filename">
+                <th mat-header-cell *matHeaderCellDef> Uploaded File </th>
+                <td mat-cell *matCellDef="let element"> {{element.filename}} </td>
+              </ng-container>
+            
+             
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div style="margin-top: 20px; align-content: center;">
+            <button mat-raised-button (click)="batchVerify()"  color="primary">Batch Verify</button>
+            </div>
+
+          </div>
+      </div>
+  </div>
+  

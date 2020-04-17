@@ -11,13 +11,19 @@ import { CommonModule } from '@angular/common';
 import { AuthGuard } from './auth.guard';
 
 const routes : Routes  = [
-  {path:'', redirectTo:'Home', pathMatch:'full'},
+  {path:'', redirectTo:'Login', pathMatch:'full'},
   {path:'Home', component: HomeComponent},
   {path:'Login', component:LoginComponent,},
   {path:'Register', component: RegistrationComponent},
-  {path:'FileUpload', component: FileUploadComponent, canActivate: [AuthGuard]},
-  {path: 'ListFiles', component: FileListComponent, canActivate: [AuthGuard]},
-  {path:'BatchVerification', component:BatchVerificationComponent, canActivate: [AuthGuard]}
+  {path:'FileUpload', component: FileUploadComponent,
+   canActivate: [AuthGuard]
+  },
+  {path: 'ListFiles', component: FileListComponent,
+   canActivate: [AuthGuard]
+  },
+  {path:'BatchVerification', component:BatchVerificationComponent, 
+  canActivate: [AuthGuard]
+}
 
 ]
 

@@ -1,10 +1,10 @@
-<div class="bg h-100">
+<div class="bg">
    <div class="container" style="padding-top: 100px;">
       <div class="row wrapper white-bg page-heading">
          <div class="col-lg-4"></div>
          <div class="col-lg-4" style="background-color: rgb(255, 255, 255);">
              <!-- <mat-toolbar> -->
-                 <h2 style="color: blue;">Register {{user}}</h2>
+                 <h2 style="color: blue;">Register</h2>
                <!-- </mat-toolbar> -->
            <!-- <h2>Routing Declaration</h2> -->
            <!-- <h2><a href="#"><i class="fa fa-arrow-left m-r-sm icon f-s-19 m-b-sm swing" aria-hidden="true"  role="button" tabindex="0"></i></a>Login </h2> -->
@@ -14,26 +14,46 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4" style="background-color: white;">
 
-        <form class="my-form" autocomplete="off">
+        <form class="my-form"  autocomplete="off" >
 
-
+         <mat-form-field class="full-width">
+            <mat-label>User Type</mat-label>
+            <mat-select id="userType" (ngModelChange)="passwordErr=false; postData.password = null; confirmPassword = null;" [(ngModel)]="postData.usertype" name="userType" matNativeControl required>
+              <mat-option value="buyer">Buyer</mat-option>
+              <mat-option value="seller">Seller</mat-option>
+              <mat-option value="service">Service Provider</mat-option>
+            </mat-select>
+            <mat-error >User Type is required</mat-error>
+          </mat-form-field>
+         
 
      
              <mat-form-field class="full-width">
                 <mat-label>User Name</mat-label>
-                <input  matInput  placeholder="Last Name" [(ngModel)]="postData.username" name="lname"  required>
+                <input  matInput  placeholder="User Name" [(ngModel)]="postData.username" name="lname"  required>
+                <mat-error >User Name is required</mat-error>
              </mat-form-field>
             
              <mat-form-field class="full-width">
                 <mat-label>Email</mat-label>
-                <input  matInput  placeholder="Email" [(ngModel)]="postData.email" name="email">
+                <input type="email"  matInput  placeholder="Email" [(ngModel)]="postData.email" name="email" required>
+                <mat-error >Email is required</mat-error>
              </mat-form-field>
-             <!-- <mat-form-field class="full-width">
+             <mat-form-field *ngIf="postData.usertype === 'buyer' || postData.usertype === 'service'" class="full-width">
                 <mat-label>Password</mat-label>
-                <input  matInput type="password"  placeholder="Password"  name="password">
-             </mat-form-field> -->
+                <input  matInput type="password" (keyup)="verifyPassword()" [(ngModel)]="postData.password"  placeholder="Password"  name="password" required>
+                <mat-error >Password is required</mat-error>
+             </mat-form-field>
+             <mat-form-field *ngIf="postData.usertype === 'buyer' || postData.usertype === 'service'" class="full-width">
+               <mat-label>Confirm Password</mat-label>
+               <input  matInput type="password" (keyup)="verifyPassword()" [(ngModel)]="confirmPassword"  placeholder="Re-enter your Password"  name="cnfpassword" required>
+               <mat-error >Confirm password is required</mat-error>
+            </mat-form-field>
+            <div>
+            <small *ngIf="passwordErr" style="color: red; margin-top: 1px;">Passwords doesn't match</small>
             <!--FORM FIELDS HERE-->
-          </form>
+         </div>
+        
 
 
         
@@ -41,8 +61,9 @@
       <!-- CONTENT HERE -->
          
 
-        <button style="margin-bottom: 20px;" mat-raised-button (click)="registerData()" color="primary">REGISTER</button>
+        <button type="submit" style="margin-bottom: 20px;" mat-raised-button (click)="registerData()"  color="primary">REGISTER</button>
         <p>Already have an account? <a (click)="goTologin()" href="javascript:void(null);">Login Here</a></p>
+      </form>
       </div>
    </div>
 

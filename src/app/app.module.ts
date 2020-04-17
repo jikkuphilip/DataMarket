@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing.module';  
 // import {MatCardModule} from '@angular/material/card';
-import {MatTableModule ,MatNativeDateModule,MatDatepickerModule,MatIconModule,MatButtonModule,MatCheckboxModule, MatToolbarModule, MatCardModule,MatFormFieldModule,MatInputModule,MatRadioModule,MatListModule,} from  '@angular/material';
+import {MatTableModule ,MatNativeDateModule,MatDatepickerModule,MatIconModule,MatButtonModule,MatCheckboxModule, MatToolbarModule, MatCardModule,MatFormFieldModule,MatInputModule,MatRadioModule,MatListModule,MatSelectModule} from  '@angular/material';
 
 
 
@@ -42,7 +42,7 @@ import { AuthGuard } from './auth.guard';
     MatNativeDateModule,FormsModule,
     MatTableModule ,
 MatDatepickerModule,MatIconModule,MatButtonModule,MatCheckboxModule, MatToolbarModule, MatCardModule,MatFormFieldModule,MatInputModule,MatListModule,MatRadioModule,
-ToastrModule.forRoot()
+ToastrModule.forRoot(),MatSelectModule, ReactiveFormsModule
 
   ],
   providers: [RegistrationService, AuthGuard],

@@ -17,8 +17,6 @@ export class LoginComponent implements OnInit {
     private toast: ToastrService) { }
 
   ngOnInit() {
-    console.log('user', history)
-    this.loginUser = localStorage.getItem('user')
     this.loginData = {};
 
   }
@@ -35,8 +33,9 @@ export class LoginComponent implements OnInit {
     this.service.UserLogin(this.loginData).subscribe(resp => {
       this.toast.success('Login Successful', 'Success');
       localStorage.setItem('isLoggedIn','true');
-      if (this.loginUser === 'Buyer')this.route.navigate(['ListFiles']);
-      else if(this.loginUser === 'Seller') this.route.navigate(['FileUpload']);
+      localStorage.setItem('email',this.loginData.email)
+      if (resp.usertype === 'buyer')this.route.navigate(['ListFiles']);
+      else if(resp.usertype === 'seller') this.route.navigate(['FileUpload']);
       else this.route.navigate(['BatchVerification'])
     },err => {
       this.toast.error('Failed to login', 'Error');

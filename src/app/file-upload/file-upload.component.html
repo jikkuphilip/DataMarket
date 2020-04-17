@@ -1,21 +1,46 @@
-<div  class="page-header">
-    <h5 style="cursor: pointer; margin-right: 10px; margin-top: 10px;" class="pull-right" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i><span>Logout</span></h5>    
+<!-- <section style="padding-top: 10px;"> -->
+  <div  class="page-header">
+    <h5 style="cursor: pointer; margin-right: 10px; margin-top: 10px; color: blue;" class="pull-right" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i><span>Logout</span></h5>    
    </div>
+    <div class="container p-5">
+      <!-- For demo purpose -->
+   
+      <!-- End -->
   
-  <div class="container" style="padding-top:20px; padding-bottom: 20px;">
-    <div class="row">
-  <div class="col-lg-3"></div>
-      <div class="col-lg-6" style="background-color: grey;">
-        <form class="my-form" autocomplete="off">
-        <mat-form-field class="full-width">
-            <mat-label>File Name</mat-label>
-            <input type="text"  matInput  placeholder="File Name" name="email">
-         </mat-form-field>
+  
+      <div class="row">
+        <div class="col-lg-5 mx-auto">
+          <div class="p-5 bg-white shadow rounded-lg"><img src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="100" height="100" class="d-block mx-auto mb-4 rounded-pill">
+  
+            <!-- Default bootstrap file upload-->
+  
+            <h6 class="text-center mb-4 text-muted">
+                <mat-form-field class="full-width">
+                    <mat-label>Title</mat-label>
+                    <input  matInput [(ngModel)]="upload.title" autocomplete="off"  placeholder="Enter your file title" name="email">
+                 </mat-form-field>
+            </h6>
+  
+            <div class="custom-file overflow-hidden rounded-pill mb-5">
+              <input id="customFile" type="file" (change)="appendFilename($event.target.files)" class="custom-file-input rounded-pill">
+              <label *ngIf="uploadFile === null" for="customFile" class="custom-file-label rounded-pill">Choose file</label>
+              <label *ngIf="uploadFile !== null" for="customFile" class="custom-file-label rounded-pill">{{uploadFile.name}}</label>
 
-            <input  type="file"  placeholder="Choose File" name="email">
-
-         </form>
-
+            </div>
+        
+            <!-- End -->
+       
+        
+  
+            <!-- Custom bootstrap upload file-->
+            <label (click)="uploadData()" for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"><i class="fa fa-upload mr-2"></i>Upload your file ...
+                          <!-- <input id="fileUpload" type="file"> -->
+                      </label>
+            <!-- End -->
+  
+          </div>
         </div>
-</div>
-</div>
+      </div>
+    </div>
+  <!-- </section> -->
+  
