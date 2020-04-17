@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
-import {RegistrationService} from '../registration.service'
+import {RegistrationService} from '../registration.service';
+import {environment} from '../../environments/environment'
 
 
 export interface PeriodicElement {
@@ -62,6 +63,13 @@ export class FileListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(tableData);
     })
 
+  }
+
+  fileDownload () {
+    this.service.fileDownload().subscribe((resp:any) => {
+      let data = environment.BASE_URL+resp.url;
+    window.open(data);
+    });
   }
 
 }

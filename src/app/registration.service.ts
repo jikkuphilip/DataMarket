@@ -38,4 +38,8 @@ batchVerification() {
 fileList () {
   return this.http.get(environment.BASE_URL+'api/file-list/');
 }
+
+fileDownload () {
+  return this.http.get(environment.BASE_URL+'api/file-download/download/');
+}
 }
