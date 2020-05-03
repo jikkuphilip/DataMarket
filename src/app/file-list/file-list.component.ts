@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import {RegistrationService} from '../registration.service';
-import {environment} from '../../environments/environment'
+import {environment} from '../../environments/environment';
+declare var require : any
+const FileSaver = require('file-saver');
 
 
 export interface PeriodicElement {
@@ -68,7 +70,8 @@ export class FileListComponent implements OnInit {
   fileDownload () {
     this.service.fileDownload().subscribe((resp:any) => {
       let data = environment.BASE_URL+resp.url;
-    window.open(data);
+    // window.open(data);
+    FileSaver.saveAs(data, "BLUEBRAIN");
     });
   }
 
