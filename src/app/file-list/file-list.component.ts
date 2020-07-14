@@ -24,8 +24,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class FileListComponent implements OnInit {
   files: any;
+  enableRank : boolean;
 
-  displayedColumns: string[] = ['position', 'name', 'rank', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
 
@@ -36,6 +37,13 @@ export class FileListComponent implements OnInit {
 
   ngOnInit() {
     this.getFiles();
+  }
+
+  setDatasource () {
+    if (this.enableRank) this.displayedColumns = ['position', 'name', 'rank', 'symbol'];
+    else this.displayedColumns= ['position', 'name', 'symbol'];
+
+
   }
 
   logout () {
