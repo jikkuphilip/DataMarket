@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
     this.register.registerUser(this.postData).subscribe(resp => {
       console.log('resp', resp)
       this.toast.success('Successfully Registered', 'Success');
-     if(this.postData.usertype === 'seller') this.toast.info('Password has been sent to the registered email address', 'Info')
+    //  if(this.postData.usertype === 'seller') this.toast.info('Password has been sent to the registered email address', 'Info')
      this.route.navigate(['Login'])
       this.postData = {};
       this.confirmPassword = null;

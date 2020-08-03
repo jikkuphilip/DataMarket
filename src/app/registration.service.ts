@@ -39,7 +39,11 @@ fileList () {
   return this.http.get(environment.BASE_URL+'api/file-list/');
 }
 
-fileDownload () {
-  return this.http.get(environment.BASE_URL+'api/file-download/download/');
+fileDownload (data) {
+  return this.http.get(environment.BASE_URL+'api/file-download/download/', {params: data});
+}
+
+filterFiles (data) {
+  return  this.http.get(environment.BASE_URL+'api/search/search/', {params: data})
 }
 }

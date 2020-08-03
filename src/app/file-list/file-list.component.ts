@@ -25,6 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class FileListComponent implements OnInit {
   files: any;
   enableRank : boolean;
+  searchFilter: any = {};
 
   displayedColumns: string[] = ['position', 'name', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -40,8 +41,24 @@ export class FileListComponent implements OnInit {
   }
 
   setDatasource () {
-    if (this.enableRank) this.displayedColumns = ['position', 'name', 'rank', 'symbol'];
-    else this.displayedColumns= ['position', 'name', 'symbol'];
+    if (this.enableRank) {
+      this.displayedColumns = ['position', 'name', 'rank', 'symbol'];
+      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.searchFilter.keyword = null;
+    }
+    else  {
+    this.displayedColumns= ['position', 'name', 'symbol'];
+    let showingData = [];
+    this.files.map((item,i) => {
+      showingData.push({
+        position: i + 1,
+        file_title: item.file_title,
+        encrypted_file_name: item.encrypted_file_name
+      })
+    })
+    const tableData: PeriodicElement[] = showingData;
+    this.dataSource = new MatTableDataSource(tableData);
+    }
 
 
   }
@@ -66,8 +83,8 @@ export class FileListComponent implements OnInit {
         showingData.push({
           position: i + 1,
           file_title: item.file_title,
+          encrypted_file_name: item.encrypted_file_name
         })
-
       })
       const tableData: PeriodicElement[] = showingData;
       this.dataSource = new MatTableDataSource(tableData);
@@ -75,11 +92,30 @@ export class FileListComponent implements OnInit {
 
   }
 
-  fileDownload () {
-    this.service.fileDownload().subscribe((resp:any) => {
-      let data = environment.BASE_URL+resp.url;
-    // window.open(data);
-    FileSaver.saveAs(data, "BLUEBRAIN");
+  searchData () {
+    let showingData = []
+    this.service.filterFiles(this.searchFilter).subscribe((resp:any) =>  {
+      this.files = resp.data;
+      this.files.map((item,i) => {
+        showingData.push({
+          position: i + 1,
+          file_title: item.file_title,
+          rank: item.rank,
+          encrypted_file_name: item.encrypted_file_name
+        })
+    })
+    const tableData: PeriodicElement[] = showingData;
+    this.dataSource = new MatTableDataSource(tableData);
+  })
+}
+
+  fileDownload (data) {
+    let obj :  any = {};
+    obj.file = data.encrypted_file_name;
+    obj.file = obj.file.replace('.enc','')
+    this.service.fileDownload(obj).subscribe((resp:any) => {
+      let fileData = environment.BASE_URL+resp.url;
+    window.open(fileData);
     });
   }
 
